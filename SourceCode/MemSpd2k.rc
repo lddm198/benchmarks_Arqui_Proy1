@@ -1,0 +1,69 @@
+#include "windows.h"
+#include "MemSpd2k.h"
+
+
+GenericIcon ICON MemSpd2k.ico
+
+GenericMenu MENU
+BEGIN
+    POPUP "  &Options"
+    BEGIN
+        MENUITEM "&Run Tests..."  11
+        MENUITEM "&Display Results..."10                
+        MENUITEM "&Exit..."     9
+    END
+    POPUP "  &Help"
+    BEGIN
+        MENUITEM "&About The Test..."   1
+    END
+END
+
+AboutBox DIALOG FIXED DISCARDABLE  22, 17, 200, 150
+STYLE DS_MODALFRAME | WS_OVERLAPPED | DS_3DLOOK | WS_CAPTION | WS_VISIBLE | WS_SYSMENU
+CAPTION " About The Program"
+BEGIN
+        CONTROL "Windows MemSpeed Memory Test",  -1, "STATIC", SS_CENTER | WS_CHILD | WS_VISIBLE | WS_GROUP, 0, 5, 200, 9
+        CONTROL "Version 3.12",                       -1, "STATIC", SS_CENTER | WS_CHILD | WS_VISIBLE | WS_GROUP, 0, 14, 200, 9
+        CONTROL "Copyright (C) Roy Longbottom 2000", -1, "STATIC", SS_CENTER | WS_CHILD | WS_VISIBLE | WS_GROUP, 0, 23, 200, 9
+        CONTROL "The program writes and reads memory, testing", -1, "STATIC", SS_CENTER | WS_CHILD | WS_VISIBLE | WS_GROUP, 0, 34, 200, 9
+        CONTROL "at 4KB, 8KB, 16KB.. up to 25% of RAM size and", -1, "STATIC", SS_CENTER | WS_CHILD | WS_VISIBLE | WS_GROUP, 0, 43, 200, 9
+        CONTROL "measuring performance in MBytes Per Second.", -1, "STATIC", SS_CENTER | WS_CHILD | WS_VISIBLE | WS_GROUP, 0, 52, 200, 9
+        CONTROL "Batch parameters can be used for different", -1, "STATIC", SS_CENTER | WS_CHILD | WS_VISIBLE | WS_GROUP, 0, 61, 200, 9
+        CONTROL "maximum RAM tested and test running time, default is", -1, "STATIC", SS_CENTER | WS_CHILD | WS_VISIBLE | WS_GROUP, 0, 70, 200, 9
+        CONTROL "0.1 seconds or about 1 second for 9 tests + overheads. ", -1, "STATIC", SS_CENTER | WS_CHILD | WS_VISIBLE | WS_GROUP, 0, 79, 200, 9
+        CONTROL "Command is MemSpd2k Auto, KB nn, msecs mm where", -1, "STATIC", SS_CENTER | WS_CHILD | WS_VISIBLE | WS_GROUP, 0, 88, 200, 9
+        CONTROL "nn is maximum KBytes, mm milliseconds test time and", -1, "STATIC", SS_CENTER | WS_CHILD | WS_VISIBLE | WS_GROUP, 0, 97, 200, 9
+        CONTROL "Auto runs the program and exits automatically.", -1, "STATIC", SS_CENTER | WS_CHILD | WS_VISIBLE | WS_GROUP, 0, 106, 200, 9
+        CONTROL "Results are saved in file XferMBPS.txt.", -1, "STATIC", SS_CENTER | WS_CHILD | WS_VISIBLE | WS_GROUP, 0, 115, 200, 9
+        CONTROL "OK",                                1, "BUTTON", BS_DEFPUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_GROUP | WS_TABSTOP, 81, 130, 32, 14
+        CONTROL "GenericIcon",                       -1, "STATIC", SS_ICON | WS_CHILD | WS_VISIBLE, 5, 5, 10, 10
+END
+
+
+DIALOG_8 DIALOG FIXED DISCARDABLE  1, 1, 320, 210
+STYLE DS_MODALFRAME | WS_OVERLAPPED | WS_CAPTION | WS_VISIBLE | WS_SYSMENU | DS_3DLOOK | DS_CONTROL
+CAPTION " Test Panel"
+// FONT 10, "Times New Roman"
+
+BEGIN
+        CONTROL " Results",     -1, "BUTTON", BS_GROUPBOX | WS_CHILD | WS_VISIBLE, 5, 5, 310, 130 
+        CONTROL "",             949, "LISTBOX", LBS_USETABSTOPS | LBS_NOTIFY | WS_CHILD | WS_VISIBLE | WS_BORDER | WS_VSCROLL | WS_HSCROLL | WS_TABSTOP, 10, 15, 300, 115
+        CONTROL " Notes",  -1, "BUTTON", BS_GROUPBOX | WS_CHILD | WS_VISIBLE, 5, 140, 310, 40 
+        CONTROL "",             950, "LISTBOX", LBS_USETABSTOPS | LBS_NOTIFY | WS_CHILD | WS_VISIBLE | WS_BORDER | WS_VSCROLL | WS_HSCROLL | WS_TABSTOP, 10, 150, 300, 25
+        CONTROL "Run Tests",        937, "BUTTON", BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 213, 183, 41, 15
+        CONTROL "Exit",         934, "BUTTON", BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 254, 183, 41, 15
+END
+
+
+DIALOG_9 DIALOG FIXED DISCARDABLE  1, 1, 320, 195
+STYLE DS_MODALFRAME | WS_OVERLAPPED | WS_CAPTION | WS_VISIBLE | WS_SYSMENU | DS_3DLOOK | DS_CONTROL
+CAPTION " Tests Running Log"
+// FONT 10, "Helv"
+
+BEGIN
+        CONTROL " Results",     -1, "BUTTON", BS_GROUPBOX | WS_CHILD | WS_VISIBLE, 5, 5, 310, 130 
+        CONTROL "",             849, "LISTBOX", LBS_USETABSTOPS | LBS_NOTIFY | WS_CHILD | WS_VISIBLE | WS_BORDER | WS_VSCROLL | WS_HSCROLL | WS_TABSTOP, 10, 15, 300, 115
+        CONTROL " Notes",  -1, "BUTTON", BS_GROUPBOX | WS_CHILD | WS_VISIBLE, 5, 140, 310, 40 
+        CONTROL "",             850, "LISTBOX", LBS_USETABSTOPS | LBS_NOTIFY | WS_CHILD | WS_VISIBLE | WS_BORDER | WS_VSCROLL | WS_HSCROLL | WS_TABSTOP, 10, 150, 300, 25
+END
+

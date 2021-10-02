@@ -1,0 +1,10 @@
+The source code is Copyright © Roy Longbottom 2004 but is free for 
+personal use or experimentation.
+
+The codes have been successfully compiled as Windowed Executable 
+/Win32 Applications via Watcom Version 11.0 C/C++ and MS Visual 
+C++ Pro Version 6.0 Release Modes with full optimisation. 
+
+roy_longbottom@compuserve.com
+
+ 
